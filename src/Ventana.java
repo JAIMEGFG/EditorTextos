@@ -43,7 +43,7 @@ public class Ventana extends JFrame implements ItemListener,ActionListener {
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
                 if (e.getButton()==MouseEvent.BUTTON3){
-                    popupMenu.show(textArea,50,50);
+                    popupMenu.show(textArea,10,50);
                     setVisible(true);
                 }
             }
@@ -93,15 +93,15 @@ public class Ventana extends JFrame implements ItemListener,ActionListener {
         btnGuardar.setIcon(new ImageIcon(getClass().getResource("/recursos/save.png")));
         btnImprimir = new JButton();
         btnImprimir.setIcon(new ImageIcon(getClass().getResource("/recursos/new.png")));
-        btnCopiar = new JButton();
+        btnCopiar = new JButton("Copiar");
         btnCopiar.setIcon(new ImageIcon(getClass().getResource("/recursos/copy.png")));
         btnCopiar2 = new JButton();
         btnCopiar2.setIcon(new ImageIcon(getClass().getResource("/recursos/copy.png")));
         btnCortar2 = new JButton();
         btnCortar2.setIcon(new ImageIcon(getClass().getResource("/recursos/cut.png")));
-        btnCortar = new JButton();
+        btnCortar = new JButton("Cortar");
         btnCortar.setIcon(new ImageIcon(getClass().getResource("/recursos/cut.png")));
-        btnPegar = new JButton();
+        btnPegar = new JButton("Pegar");
         btnPegar.setIcon(new ImageIcon(getClass().getResource("/recursos/paste.png")));
         btnPegar2 = new JButton();
         btnPegar2.setIcon(new ImageIcon(getClass().getResource("/recursos/paste.png")));

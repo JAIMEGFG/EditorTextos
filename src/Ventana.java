@@ -1,3 +1,5 @@
+import sun.text.normalizer.Replaceable;
+
 import javax.swing.*;
 import javax.swing.text.DefaultEditorKit;
 import java.awt.*;
@@ -16,7 +18,7 @@ public class Ventana extends JFrame implements ItemListener,ActionListener {
     JTextArea textArea;
     JPopupMenu popupMenu;
     JFileChooser fileChooser;
-    ActionMap acciones;
+
 
     public void initGUI(){
         instancias();
@@ -36,11 +38,11 @@ public class Ventana extends JFrame implements ItemListener,ActionListener {
         popupMenu.add(btnCopiar);
         popupMenu.add(btnCortar);
         popupMenu.add(btnPegar);
-        popupMenu.addMouseListener(new MouseAdapter() {
+        textArea.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                if (e.getButton()==MouseEvent.BUTTON1){
+                if (e.getButton()==MouseEvent.BUTTON3){
                     popupMenu.show(textArea,50,50);
                     setVisible(true);
                 }
@@ -110,7 +112,7 @@ public class Ventana extends JFrame implements ItemListener,ActionListener {
         labelLetra = new JLabel("Tipo de Letra");
         labelTamanio = new JLabel("Tamaño de Letra");
         textArea = new JTextArea();
-        acciones = textArea.getActionMap();
+        
     }
     private void configurarMenu() {
         barraMenu.add(menuArchivo);
@@ -246,11 +248,12 @@ public class Ventana extends JFrame implements ItemListener,ActionListener {
             Font negrita = new Font((String) modeloLetra.getSelectedItem(), Font.BOLD, (int) modeloTamanio.getSelectedItem());
             textArea.setFont(negrita);
         }else if (e.getSource()==btnCopiar){
-            acciones.get(DefaultEditorKit.copyAction);
+            textArea.getSelectedText();
         }else if (e.getSource()==btnPegar){
-            acciones.get(DefaultEditorKit.pasteAction);
+            textArea.getSelectedText();
         }else if (e.getSource()==btnCortar){
-            acciones.get(DefaultEditorKit.cutAction);
+             textArea.getSelectedText();
+             textArea.setText("");
         }else if (e.getSource()==menuItemGuardarComo){
             fileChooser.showSaveDialog(this);
         }else if (e.getSource()==menuItemNormal){
